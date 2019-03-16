@@ -31,10 +31,21 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
-        android:onClick="navigateToMap"
+        android:onClick="navigateMessageRead"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/name"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/goToMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:onClick="navigateToMap"
+        android:text="@string/go_to_map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 </android.support.constraint.ConstraintLayout>
