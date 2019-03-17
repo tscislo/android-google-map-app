@@ -11,7 +11,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, BasicDialogActionListener<LatLng> {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, BasicInputDialogActionListener<LatLng> {
 
     private GoogleMap googleMap;
 
@@ -31,10 +31,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         this.googleMap = googleMap;
 
         this.googleMap.setOnMapClickListener((latLng) -> {
-            BasicDialog basicDialog = new BasicDialog();
-            basicDialog.setInflater(getLayoutInflater());
-            basicDialog.show(getFragmentManager(), "BasicDialog");
-            basicDialog.setExternalData(latLng);
+            BasicInputDialog basicInputDialog = new BasicInputDialog();
+            basicInputDialog.setExternalData(latLng);
+            basicInputDialog.show(getFragmentManager(), "BasicInputDialog");
+        });
+
+        this.googleMap.setOnMarkerClickListener((marker) -> {
+            System.out.println(marker.getTitle());
+            marker.remove();
+            return true;
         });
 
         // Add a marker in Sydney and move the camera
@@ -49,7 +54,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Marker marker = googleMap.addMarker(new MarkerOptions()
                 .position(latLng)
                 .title(markerName));
-
     }
 
     @Override

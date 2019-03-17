@@ -9,31 +9,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-public class BasicDialog<T> extends DialogFragment {
-    private LayoutInflater inflater;
+public class BasicInputDialog<T> extends DialogFragment {
     private View dialogView;
-    BasicDialogActionListener basicDialogActionListener;
+    BasicInputDialogActionListener basicInputDialogActionListener;
 
     private T externalData;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        dialogView = inflater.inflate(R.layout.dialog_marker_name, null);
+        dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_marker_name, null, false);
 
-        // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(dialogView)
                 .setMessage("Message")
                 .setPositiveButton("OK", (dialog, id) -> {
                     EditText editText = dialogView.findViewById(R.id.name);
-                    System.out.println(editText.getText());
-                    this.basicDialogActionListener.onDialogPositiveClick(editText.getText().toString(), this.externalData);
+                    this.basicInputDialogActionListener.onDialogPositiveClick(editText.getText().toString(), this.externalData);
                 })
                 .setNegativeButton("Cancel", (dialog, id) -> {
-                    this.basicDialogActionListener.onDialogNegativeClick();
+                    this.basicInputDialogActionListener.onDialogNegativeClick();
                 });
-        // Create the AlertDialog object and return it
         return builder.create();
     }
 
@@ -41,22 +37,13 @@ public class BasicDialog<T> extends DialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            basicDialogActionListener = (BasicDialogActionListener) context;
+            basicInputDialogActionListener = (BasicInputDialogActionListener) context;
         } catch (ClassCastException e) {
-            // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException("Activity must implement BasicDialogActionListener");
+            throw new ClassCastException("Activity must implement BasicInputDialogActionListener");
         }
 
     }
 
-
-    public LayoutInflater getInflater() {
-        return inflater;
-    }
-
-    public void setInflater(LayoutInflater inflater) {
-        this.inflater = inflater;
-    }
 
     public T getExternalData() {
         return externalData;
