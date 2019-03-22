@@ -1,12 +1,14 @@
-package eu.scislo.mobilenext;
+package eu.scislo.mobilenext.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
+import eu.scislo.mobilenext.MyIntents;
+import eu.scislo.mobilenext.R;
+import eu.scislo.mobilenext.User;
 import eu.scislo.mobilenext.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void navigateToMap(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateList(View view) {
+        Intent intent = new Intent(this, PlacesList.class);
         startActivity(intent);
     }
 

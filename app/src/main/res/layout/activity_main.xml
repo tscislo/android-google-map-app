@@ -13,7 +13,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".activities.MainActivity">
 
         <EditText
             android:id="@+id/name"
@@ -49,12 +49,11 @@
             android:id="@+id/goToMap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="76dp"
-            android:layout_marginEnd="8dp"
             android:onClick="navigateToMap"
             android:text="@string/go_to_map"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/go_to_list"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email" />
 
@@ -65,13 +64,25 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="80dp"
             android:layout_marginEnd="8dp"
-            android:text="@={user.email}"
             android:ems="10"
             android:inputType="textEmailAddress"
+            android:text="@={user.email}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/name" />
+
+        <Button
+            android:id="@+id/go_to_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:onClick="navigateList"
+            android:text="Go To List"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/goToMap"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
 
     </android.support.constraint.ConstraintLayout>
 

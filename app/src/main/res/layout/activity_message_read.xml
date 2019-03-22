@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MessageRead" >
+    tools:context=".activities.MessageRead" >
 
     <TextView
         android:id="@+id/myText"
