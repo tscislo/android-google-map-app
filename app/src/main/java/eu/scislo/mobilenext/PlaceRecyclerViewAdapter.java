@@ -32,7 +32,8 @@ public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecycler
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Place place = mData.get(position);
-        holder.myTextView.setText(place.toString());
+        holder.mainTextViewForTitle.setText(place.toString());
+        holder.textViewForDetails.setText(place.toString());
     }
 
     // total number of rows
@@ -44,11 +45,13 @@ public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecycler
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
+        TextView mainTextViewForTitle;
+        TextView textViewForDetails;
 
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.place);
+            mainTextViewForTitle = itemView.findViewById(R.id.placeTitle);
+            textViewForDetails = itemView.findViewById(R.id.placeDetails);
             itemView.setOnClickListener(this);
         }
 

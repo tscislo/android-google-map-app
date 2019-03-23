@@ -51,10 +51,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
-        this.googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        Place place = new Place(new MarkerOptions()
+                .position(sydney)
+                .title("Sydney"), PlaceTypes.OWN);
+        Places.list.add(place);
+        googleMap.addMarker(place.markerOptions);
+
+
+        for(int i =0; i< 100; i++){
+            Places.list.add(this.getRandPlace());
+        }
+
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
+
+    private Place getRandPlace() {
+        LatLng sydney = new LatLng(-34 + Math.random() * 10, 151 + Math.random() * 10);
+        Place place = new Place(new MarkerOptions()
+                .position(sydney)
+                .title("Sydney Australia" + Math.random()), PlaceTypes.OWN);
+
+        googleMap.addMarker(place.markerOptions);
+        return place;
+    }
 
     @Override
     public void onDialogPositiveClick(String markerName, LatLng latLng) {

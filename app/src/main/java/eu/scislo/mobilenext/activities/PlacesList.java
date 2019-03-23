@@ -16,26 +16,33 @@ import eu.scislo.mobilenext.R;
 
 public class PlacesList extends AppCompatActivity implements PlaceRecyclerViewAdapter.ItemClickListener {
 
+    PlaceRecyclerViewAdapter adapter;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places_list);
 
-        RecyclerView recyclerView = findViewById(R.id.placesList);
+        recyclerView = findViewById(R.id.placesList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
+
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 linearLayoutManager.getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
-        PlaceRecyclerViewAdapter adapter = new PlaceRecyclerViewAdapter(this, Places.list);
+        this.drawRecyclerAdapter();
+    }
+
+    public void drawRecyclerAdapter() {
+        adapter = new PlaceRecyclerViewAdapter(this, Places.list);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
-
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        System.out.println(position);
+        Places.list.remove(position);
+        this.drawRecyclerAdapter();
     }
 }
