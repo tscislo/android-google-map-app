@@ -67,7 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     private Place getRandPlace() {
-        LatLng sydney = new LatLng(-34 + Math.random() * 10, 151 + Math.random() * 10);
+        LatLng sydney = new LatLng(-34 + Math.random() * 100, 151 + Math.random() * 100);
         Place place = new Place(new MarkerOptions()
                 .position(sydney)
                 .title("Sydney Australia" + Math.random()), PlaceTypes.OWN);

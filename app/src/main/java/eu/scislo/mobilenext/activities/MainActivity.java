@@ -35,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void navigateDrawer(View view) {
+        Intent intent = new Intent(this, NavigationDrawer.class);
+        startActivity(intent);
+    }
+
     public void navigateMessageRead(View view) {
         Intent intent = new Intent(this, MessageRead.class);
         intent.putExtra(MyIntents.MESSAGE.toString(), this.user.toString());

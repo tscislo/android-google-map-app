@@ -84,6 +84,19 @@
             app:layout_constraintStart_toEndOf="@+id/goToMap"
             app:layout_constraintTop_toBottomOf="@+id/email" />
 
+        <Button
+            android:id="@+id/goToDrawer"
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="51dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="navigateDrawer"
+            android:text="Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/goToMap" />
+
     </android.support.constraint.ConstraintLayout>
 
 </layout>
