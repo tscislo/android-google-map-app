@@ -6,6 +6,7 @@ android {
     }
     compileSdkVersion 27
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
         applicationId "eu.scislo.mobilenext"
         minSdkVersion 23
         targetSdkVersion 27
